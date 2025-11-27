@@ -1,0 +1,16 @@
+# Arquivos compilados pelo Maven
+/target/
+/dist/
+/build/
+
+# Configurações pessoais do NetBeans (não devem ser compartilhadas)
+nbproject/private/
+nbproject/project.properties
+nbproject/genfiles.properties
+build.xml
+nbbuild.xml
+
+# Arquivos de sistema/IDE temporários
+.DS_Store
+*.class
+*.log
