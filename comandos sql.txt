@@ -1,0 +1,37 @@
+CREATE TABLE usuario (
+    id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    senha VARCHAR(50) NOT NULL,
+    tipo VARCHAR(20) DEFAULT 'COMUM'
+);
+
+CREATE TABLE livro (
+    id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    titulo VARCHAR(150) NOT NULL,
+    autor VARCHAR(100) NOT NULL,
+    isbn VARCHAR(20),
+    quantidade INT DEFAULT 1
+);
+
+CREATE TABLE emprestimo (
+    id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    id_usuario INT,
+    id_livro INT,
+    data_emprestimo DATE NOT NULL,
+    data_prevista_devolucao DATE NOT NULL,
+    data_devolucao DATE,
+    multa DECIMAL(10, 2) DEFAULT 0.0,
+    FOREIGN KEY (id_usuario) REFERENCES usuario(id),
+    FOREIGN KEY (id_livro) REFERENCES livro(id)
+);
+
+INSERT INTO usuario (nome, email, senha, tipo) 
+VALUES ('Administrador', 'admin@biblioteca.com', 'admin', 'ADMIN');
+
+INSERT INTO usuario (nome, email, senha, tipo) 
+VALUES ('Aluno Exemplo', 'aluno@teste.com', '123', 'COMUM');
+
+INSERT INTO livro (titulo, autor, isbn, quantidade) VALUES ('Java para Iniciantes', 'Herbert Schildt', '978-123', 5);
+INSERT INTO livro (titulo, autor, isbn, quantidade) VALUES ('Engenharia de Software', 'Roger Pressman', '978-456', 3);
+INSERT INTO livro (titulo, autor, isbn, quantidade) VALUES ('Clean Code', 'Robert C. Martin', '978-789', 2);
