@@ -1,13 +1,5 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package br.com.biblioteca.dao;
 
-/**
- *
- * @author leons
- */
 import br.com.biblioteca.model.Usuario;
 import br.com.biblioteca.util.ConnectionFactory;
 import java.sql.*;
@@ -30,6 +22,7 @@ public class UsuarioDAO {
                 u.setId(rs.getInt("id"));
                 u.setNome(rs.getString("nome"));
                 u.setEmail(rs.getString("email"));
+                u.setTipo(rs.getString("tipo")); 
                 return u;
             }
         } catch (Exception e) {
@@ -38,7 +31,20 @@ public class UsuarioDAO {
         return null;
     }
     
-        public List<Usuario> listarTodos() {
+    public void salvar(Usuario u) throws Exception {
+        String sql = "INSERT INTO usuario (nome, email, senha, tipo) VALUES (?, ?, ?, ?)";
+        try (Connection conn = ConnectionFactory.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            
+            stmt.setString(1, u.getNome());
+            stmt.setString(2, u.getEmail());
+            stmt.setString(3, u.getSenha());
+            stmt.setString(4, "COMUM"); 
+            stmt.executeUpdate();
+        }
+    }
+    
+    public List<Usuario> listarTodos() {
         List<Usuario> lista = new ArrayList<>();
         String sql = "SELECT * FROM usuario";
         try (Connection conn = ConnectionFactory.getConnection();
@@ -49,6 +55,7 @@ public class UsuarioDAO {
                 u.setId(rs.getInt("id"));
                 u.setNome(rs.getString("nome"));
                 u.setEmail(rs.getString("email"));
+                u.setTipo(rs.getString("tipo"));
                 lista.add(u);
             }
         } catch (Exception e) { e.printStackTrace(); }

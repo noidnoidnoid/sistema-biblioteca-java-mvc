@@ -1,13 +1,13 @@
-<%-- 
-    Document   : cadastrar_livro
-    Created on : 27 de nov. de 2025, 14:19:51
-    Author     : leons
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<c:if test="${sessionScope.usuarioLogado == null || sessionScope.usuarioLogado.tipo != 'ADMIN'}">
+    <c:redirect url="index.jsp"/>
+</c:if>
 <html>
-    <head><title>Novo Livro</title></head>
+    <head>
+        <title>Novo Livro</title>
+        <link rel="stylesheet" type="text/css" href="estilo.css">
+    </head>
     <body>
         <h2>Cadastro de Livro</h2>
         <form action="LivroController" method="POST">

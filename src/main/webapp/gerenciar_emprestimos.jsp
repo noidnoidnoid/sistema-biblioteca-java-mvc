@@ -1,16 +1,13 @@
-<%-- 
-    Document   : gerenciar_emprestimos
-    Created on : 27 de nov. de 2025, 15:15:57
-    Author     : leons
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="jakarta.tags.core" %>
 <%@taglib prefix="fmt" uri="jakarta.tags.fmt" %>
 
 <!DOCTYPE html>
 <html>
-    <head><title>Empréstimos Ativos</title></head>
+    <head>
+        <title>Empréstimos Ativos</title>
+        <link rel="stylesheet" type="text/css" href="estilo.css">
+    </head>
     <body>
         <h2>Empréstimos Pendentes</h2>
         <table border="1">

@@ -1,16 +1,16 @@
-<%-- 
-    Document   : relatorio_historico
-    Created on : 27 de nov. de 2025, 15:16:22
-    Author     : leons
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="jakarta.tags.core" %>
 <%@taglib prefix="fmt" uri="jakarta.tags.fmt" %>
+<c:if test="${sessionScope.usuarioLogado == null || sessionScope.usuarioLogado.tipo != 'ADMIN'}">
+    <c:redirect url="index.jsp"/>
+</c:if>
 
 <!DOCTYPE html>
 <html>
-    <head><title>Relatório Geral</title></head>
+    <head>
+        <title>Relatório Geral</title>
+        <link rel="stylesheet" type="text/css" href="estilo.css">
+    </head>
     <body>
         <h2>Histórico de Empréstimos e Relatório de Multas</h2>
         <table border="1">

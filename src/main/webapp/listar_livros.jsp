@@ -1,14 +1,11 @@
-<%-- 
-    Document   : listar_livros
-    Created on : 27 de nov. de 2025, 14:23:51
-    Author     : leons
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="jakarta.tags.core" %>
 <!DOCTYPE html>
 <html>
-    <head><title>Livros</title></head>
+    <head>
+        <title>Livros</title>
+        <link rel="stylesheet" type="text/css" href="estilo.css">
+    </head>
     <body>
         <h2>Acervo da Biblioteca</h2>
         <table border="1">
